@@ -17,19 +17,19 @@ app.use(express.json()); // allows us to accept JSON data in the req.body
 app.use("/api/products", productRoutes);
 
 if (process.env.NODE_ENV === "production") {
-	app.use(express.static(path.join(__dirname, "/frontend/dist")));
-	app.get("*", (req, res) => {
-		res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
-	});
+  app.use(express.static(path.join(__dirname, "/frontend/dist")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+  });
 }
 
 // Fallback to serve index.html for non-API routes (both dev and prod)
 app.get("*", (req, res) => {
-    // Skip API routes only, let static middleware handle assets
-    if (req.path.startsWith('/api/')) {
-        return res.status(404).json({ message: 'API endpoint not found' });
-    }
-    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+  // Skip API routes only, let static middleware handle assets
+  if (req.path.startsWith("/api/")) {
+    return res.status(404).json({ message: "API endpoint not found" });
+  }
+  res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
 });
 
 app.listen(PORT, () => {
