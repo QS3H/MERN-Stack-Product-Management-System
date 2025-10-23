@@ -171,5 +171,5 @@ This project is licensed under the ISC License.
 
 ## 👨‍💻 Author
 
-Created as part of a MERN Stack crash course tutorial.
+Created as part of Burak Orkmez's MERN Stack crash course tutorial.
 
